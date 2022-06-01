@@ -1,26 +1,29 @@
-import React from "react";
-import { Box, CssBaseline, Paper, Typography, ThemeProvider } from "@mui/material";
-import theme from './theme';
+import { Box, Divider, CssBaseline, ThemeProvider } from "@mui/material";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { routes as appRoutes } from "./routes";
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import theme from './theme'
 
 function App() {
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box
-        height="100vh"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        flexDirection="column"
-      >
-        <Paper
-          elevation={3}
-          sx={{ padding: "1rem", backgroundColor: "secondary.light" }}
-        >
-          <Typography color="primary.dark" variant="h1">
-            Starter App
-          </Typography>
-        </Paper>
+      <Box height="100vh" display="flex" flexDirection="column">
+        <Router>
+          <Navbar />
+          <Routes>
+            {appRoutes.map((route) => (
+              <Route
+                key={route.key}
+                path={route.path}
+                element={<route.component />}
+              />
+            ))}
+          </Routes>
+          <Footer />
+        </Router>
       </Box>
     </ThemeProvider>
   );
