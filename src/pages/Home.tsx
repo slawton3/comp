@@ -13,7 +13,7 @@ const Home: FC<any> = (): ReactElement => {
         }}>
             <Grid container direction="column" alignItems="center">
                 <Typography align="center" variant="h4" component="h1" gutterBottom>
-                Efficiently search for quality Youtube content
+                 Efficiently search for quality Youtube content
                 </Typography>
                 <Divider />
                 <Button href="/search" variant="contained">Try it now</Button>
