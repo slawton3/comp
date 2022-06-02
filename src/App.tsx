@@ -1,4 +1,4 @@
-import { Box, Divider, CssBaseline, ThemeProvider } from "@mui/material";
+import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { routes as appRoutes } from "./routes";
 import Navbar from './components/Navbar';
