@@ -4,7 +4,7 @@ import { Controller, useForm } from "react-hook-form";
 
 const Search: FC = (): ReactElement => {
   const { handleSubmit, reset, control } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data: any) => console.log(data);
 
   return (
     <Grid container direction="column" alignItems="center" spacing={2} mt={5}>
