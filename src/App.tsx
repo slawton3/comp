@@ -8,24 +8,24 @@ import theme from './theme'
 function App() {
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Box height="100vh" display="flex" flexDirection="column">
-        <Router>
-          <Navbar />
-          <Routes>
-            {appRoutes.map((route) => (
-              <Route
-                key={route.key}
-                path={route.path}
-                element={<route.component />}
-              />
-            ))}
-          </Routes>
-          <Footer />
-        </Router>
-      </Box>
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Box height="100vh" display="flex" flexDirection="column">
+          <Router>
+            <Navbar />
+            <Routes>
+              {appRoutes.map((route) => (
+                <Route
+                  key={route.key}
+                  path={route.path}
+                  element={<route.component />}
+                />
+              ))}
+            </Routes>
+            <Footer />
+          </Router>
+        </Box>
+      </ThemeProvider>
   );
 }
 
