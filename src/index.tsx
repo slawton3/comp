@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { Provider } from 'react-redux';
-import { store } from './redux/store'
+import { store } from './app/store'
+import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
+import { cocktailSlice } from './features/cocktails';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -10,9 +12,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <ApiProvider api={cocktailSlice}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ApiProvider>
   </React.StrictMode>
 );
 
