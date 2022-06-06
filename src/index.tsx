@@ -2,21 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { Provider } from 'react-redux';
-import { store } from './app/store'
-import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
-import { cocktailSlice } from './features/cocktails';
+import { setupStore } from './app/store';
 import reportWebVitals from './reportWebVitals';
+
+const store = setupStore();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ApiProvider api={cocktailSlice}>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </ApiProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 

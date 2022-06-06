@@ -113,3 +113,7 @@ export interface IDrink {
   dateModified: string | null;
   thumbnailFilename: string | null;
 }
+
+export interface IDrinks {
+    "drinks": Array<IDrink>;
+}

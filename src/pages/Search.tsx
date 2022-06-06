@@ -7,12 +7,10 @@ const Search: FC = (): ReactElement => {
   const {
     data: cocktails,
     isLoading,
-    isSuccess,
-    isError,
     error
-  } = useGetCocktailByNameQuery('Old Fashioned');
+  } = useGetCocktailByNameQuery('Negroni');
 
-  
+  console.log(useGetCocktailByNameQuery('Negroni'));
   
   const { handleSubmit, reset, control } = useForm();
   const onSubmit = (data: any) => console.log(data);
@@ -39,7 +37,7 @@ const Search: FC = (): ReactElement => {
         </form>
       </Grid>
       <List>
-        {cocktails?.map((cocktail) => (
+        {cocktails?.drinks.map((cocktail) => (
           <ListItem key={cocktail.idDrink}>
             <ListItemText>{cocktail.strDrink}</ListItemText>
           </ListItem>
