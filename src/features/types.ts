@@ -114,6 +114,30 @@ export interface IDrink {
   thumbnailFilename: string | null;
 }
 
+export interface IAlcoholicDrink {
+  "strDrink": string;
+  "strDrinkThumb": string;
+  "idDrink": string;
+}
+
+export interface IAlcoholicDrinks {
+  "drinks": Array<IAlcoholicDrink>;
+}
+export interface ICategory {
+  "strCategory": string;
+}
+
+export interface ICategories {
+  "drinks": Array<ICategory>
+}
+
+export interface IGlass {
+  "strGlass": string;
+}
+
+export interface IGlasses {
+  "drinks": Array<IGlass>
+}
 export interface IDrinks {
     "drinks": Array<IDrink>;
 }

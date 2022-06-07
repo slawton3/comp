@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IDrinks } from './types'
+import { IAlcoholicDrinks, IDrinks } from './types'
 
 
 
@@ -38,9 +38,17 @@ export const cocktailApi = createApi({
             query: (ingredient: string) => `/filter.php?i=${ingredient}`,
         }),
         getFilterByManyIngredients: builder.query<IDrinks, string>({
-            query: (ingredients: string[]) => `/filter.php?i=${ingredients.join(',')}`,
+            query: (ingredients: string) => `/filter.php?i=${ingredients}`,
+        }),
+        getFilterByAlc: builder.query<IAlcoholicDrinks, string>({
+            query: () => `/filter.php?a=Alcoholic`,
+        }),
+        getFilterByNA: builder.query<IAlcoholicDrinks, string>({
+            query: () => `/filter.php?a=Non_Alcoholic`,
+        }),
+        getFilterByGlass: builder.query<IAlcoholicDrinks, string>({
+            query: (glass: string) => `/filter.php?g=${glass}`,
         })
-        
     }),
 });
 
