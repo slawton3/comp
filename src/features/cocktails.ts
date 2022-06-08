@@ -52,4 +52,19 @@ export const cocktailApi = createApi({
     }),
 });
 
-export const { useGetCocktailByNameQuery } = cocktailApi; 
+export const {
+    useGetCocktailByNameQuery,
+    useGetCocktailByLetterQuery,
+    useGetCocktailByIngredientQuery,
+    useGetCocktailByIDQuery,
+    useGetIngredientByIDQuery,
+    useGetRandomCocktailQuery,
+    useGetRandomCocktailsQuery,
+    useGetLatestCocktailsQuery,
+    useGetMostPopularCocktailsQuery,
+    useGetFilterByIngredientQuery,
+    useGetFilterByManyIngredientsQuery,
+    useGetFilterByAlcQuery,
+    useGetFilterByGlassQuery,
+    useGetFilterByNAQuery
+} = cocktailApi;
