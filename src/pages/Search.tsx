@@ -1,16 +1,11 @@
 import React, { ReactElement, FC, useState } from 'react';
-import { useGetCocktailByNameQuery } from '../features/cocktails';
-import { Button, TextField, Grid, List, ListItem, ListItemText } from "@mui/material";
+import { useGetCocktailByLetterQuery, useGetCocktailByNameQuery, useGetMostPopularCocktailsQuery } from '../features/cocktails';
+import { Button, TextField, Grid, Box, ListItem, ListItemText } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
+import CocktailCard from '../components/CocktailCard';
 
 const Search: FC = (): ReactElement => {
-  const {
-    data: cocktails,
-    isLoading,
-    error
-  } = useGetCocktailByNameQuery('Negroni');
 
-  console.log(useGetCocktailByNameQuery('Negroni'));
   
   const { handleSubmit, reset, control } = useForm();
   const onSubmit = (data: any) => console.log(data);
@@ -36,13 +31,6 @@ const Search: FC = (): ReactElement => {
           </Grid>
         </form>
       </Grid>
-      <List>
-        {cocktails?.drinks.map((cocktail) => (
-          <ListItem key={cocktail.idDrink}>
-            <ListItemText>{cocktail.strDrink}</ListItemText>
-          </ListItem>
-        ))}
-      </List>
     </>
   );
 };

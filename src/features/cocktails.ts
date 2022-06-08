@@ -4,7 +4,7 @@ import { IAlcoholicDrinks, IDrinks, IIngredients } from './types'
 
 
 export const cocktailApi = createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://www.thecocktaildb.com/api/json/v1/1/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/` }),
     tagTypes: [],
     endpoints: (builder) => ({
         getCocktailByName: builder.query<IDrinks, string>({
@@ -22,16 +22,16 @@ export const cocktailApi = createApi({
         getIngredientByID: builder.query<IIngredients, string>({
             query: (ingredient: string) => `/lookup.php?iid=${ingredient}`,
         }),
-        getRandomCocktail: builder.query<IDrinks, string>({
+        getRandomCocktail: builder.query<IDrinks, void>({
             query: () => `/random.php`,
         }),
-        getRandomCocktails: builder.query<IDrinks, string>({
+        getRandomCocktails: builder.query<IDrinks, void>({
             query: () => `/randomselection.php`,
         }),
-        getLatestCocktails: builder.query<IDrinks, string>({
+        getLatestCocktails: builder.query<IDrinks, void>({
             query: () => `/latest.php`,
         }),
-        getMostPopularCocktails: builder.query<IDrinks, string>({
+        getMostPopularCocktails: builder.query<IDrinks, void>({
             query: () => `/popular.php`,
         }),
         getFilterByIngredient: builder.query<IAlcoholicDrinks, string>({
@@ -40,10 +40,10 @@ export const cocktailApi = createApi({
         getFilterByManyIngredients: builder.query<IDrinks, string>({
             query: (ingredients: string) => `/filter.php?i=${ingredients}`,
         }),
-        getFilterByAlc: builder.query<IAlcoholicDrinks, string>({
+        getFilterByAlc: builder.query<IAlcoholicDrinks, void>({
             query: () => `/filter.php?a=Alcoholic`,
         }),
-        getFilterByNA: builder.query<IAlcoholicDrinks, string>({
+        getFilterByNA: builder.query<IAlcoholicDrinks, void>({
             query: () => `/filter.php?a=Non_Alcoholic`,
         }),
         getFilterByGlass: builder.query<IAlcoholicDrinks, string>({
@@ -66,5 +66,5 @@ export const {
     useGetFilterByManyIngredientsQuery,
     useGetFilterByAlcQuery,
     useGetFilterByGlassQuery,
-    useGetFilterByNAQuery
+    useGetFilterByNAQuery,
 } = cocktailApi;
