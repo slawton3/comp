@@ -141,3 +141,16 @@ export interface IGlasses {
 export interface IDrinks {
     "drinks": Array<IDrink>;
 }
+
+export interface IIngredient {
+    "idIngredient": string;
+    "strIngredient": string;
+    "strDescription": string;
+    "strType": string;
+    "strAlcohol": string;
+    "strABV": string;
+}
+
+export interface IIngredients {
+    "ingredient": Array<IIngredient>;
+}

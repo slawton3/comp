@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IAlcoholicDrinks, IDrinks } from './types'
+import { IAlcoholicDrinks, IDrinks, IIngredients } from './types'
 
 
 
@@ -13,13 +13,13 @@ export const cocktailApi = createApi({
         getCocktailByLetter: builder.query<IDrinks, string>({
             query: (letter: string) => `/search.php?f=${letter}`,
         }),
-        getCocktailByIngredient: builder.query<IDrinks, string>({
+        getCocktailByIngredient: builder.query<IIngredients, string>({
             query: (ingredient: string) => `/search.php?i=${ingredient}`,
         }),
         getCocktailByID: builder.query<IDrinks, string>({
             query: (id: string) => `/lookup.php?i=${id}`,
         }),
-        getIngredientByID: builder.query<IDrinks, string>({
+        getIngredientByID: builder.query<IIngredients, string>({
             query: (ingredient: string) => `/lookup.php?iid=${ingredient}`,
         }),
         getRandomCocktail: builder.query<IDrinks, string>({
@@ -34,7 +34,7 @@ export const cocktailApi = createApi({
         getMostPopularCocktails: builder.query<IDrinks, string>({
             query: () => `/popular.php`,
         }),
-        getFilterByIngredient: builder.query<IDrinks, string>({
+        getFilterByIngredient: builder.query<IAlcoholicDrinks, string>({
             query: (ingredient: string) => `/filter.php?i=${ingredient}`,
         }),
         getFilterByManyIngredients: builder.query<IDrinks, string>({
@@ -48,7 +48,7 @@ export const cocktailApi = createApi({
         }),
         getFilterByGlass: builder.query<IAlcoholicDrinks, string>({
             query: (glass: string) => `/filter.php?g=${glass}`,
-        })
+        }),
     }),
 });
 
