@@ -9,7 +9,7 @@ const Home: FC = (): ReactElement => {
         isLoading,
         error
       } = useGetMostPopularCocktailsQuery();
-      
+
     return (
         <>
         <Box mt={5} mb={10}>
@@ -28,14 +28,12 @@ const Home: FC = (): ReactElement => {
                 </Grid>
             </Paper>
         </Box>
-        <Grid container direction="column" alignItems="center">
-            <Grid container spacing={{ xs: 1, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                {cocktails?.drinks?.map((cocktail) => (
-                    <Grid item xs={2} sm={4} md={4}>
-                        <CocktailCard key={cocktail.idDrink} cocktail={cocktail} />
-                    </Grid>
-                ))}
-            </Grid>
+        <Grid container spacing={4} sx={{ mx: "auto", width: "80%" }}>
+            {cocktails?.drinks?.map((cocktail) => (
+                <Grid item xs={12} sm={6} md={4}>
+                    <CocktailCard key={cocktail.idDrink} cocktail={cocktail} />
+                </Grid>
+            ))}
         </Grid>
     </>
     )

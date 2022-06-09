@@ -7,22 +7,25 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { IDrink } from '../features/types';
 
-export default function CocktailCard({ cocktail }: any) {
-  console.log(cocktail.cocktail)
+interface ICocktail {
+  "cocktail": IDrink;
+}
+
+export default function CocktailCard(cocktail: ICocktail) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
-        alt="green iguana"
+        alt={cocktail.cocktail.strDrink}
         height="140"
-        image={cocktail?.strDrinkThumb}
+        image={cocktail?.cocktail.strDrinkThumb}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {cocktail?.strDrink}
+          {cocktail?.cocktail.strDrink}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {cocktail?.strIBA}
+          {cocktail?.cocktail.strIBA}
         </Typography>
       </CardContent>
       <CardActions>
