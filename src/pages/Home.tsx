@@ -1,5 +1,5 @@
 import React, { ReactElement, FC } from 'react';
-import { Paper, Box, Grid, Typography, Button, Divider } from '@mui/material';
+import { Paper, Box, Grid, Typography, Button, Divider, Zoom } from '@mui/material';
 import CocktailCard from '../components/CocktailCard';
 import { useGetMostPopularCocktailsQuery } from '../features/cocktails';
 
@@ -24,14 +24,17 @@ const Home: FC = (): ReactElement => {
                         Find your next cocktail
                     </Typography>
                     
-                    <Button href="/search" variant="contained">Try it now</Button>
+                    <Button href="/search" variant="contained">Search</Button>
                 </Grid>
             </Paper>
         </Box>
+        <Typography align="center" variant="h4" component="h1" gutterBottom>
+                The Classics
+            </Typography>
         <Grid container spacing={4} sx={{ mx: "auto", width: "80%" }}>
             {cocktails?.drinks?.map((cocktail) => (
-                <Grid item xs={12} sm={6} md={4}>
-                    <CocktailCard key={cocktail.idDrink} cocktail={cocktail} />
+                <Grid key={cocktail.idDrink} item xs={12} sm={6} md={4}>
+                    <CocktailCard cocktail={cocktail} />
                 </Grid>
             ))}
         </Grid>

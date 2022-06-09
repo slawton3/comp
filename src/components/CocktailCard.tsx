@@ -30,7 +30,7 @@ export default function CocktailCard(cocktail: ICocktail) {
       </CardContent>
       <CardActions>
         <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small">Ingredients</Button>
       </CardActions>
     </Card>
   );
