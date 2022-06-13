@@ -3,6 +3,7 @@ import Search from './pages/Search';
 
 
 import { FC } from 'react';
+import SearchID from './pages/SearchID';
 
 interface Route {
     key: string;
@@ -26,5 +27,12 @@ export const routes: Array<Route> = [
         path: '/search',
         enabled: true,
         component: Search
+    },
+    {
+        key: 'search-route-by-id',
+        title: 'Search by ID',
+        path: '/search/:id',
+        enabled: true,
+        component: SearchID
     }
 ]
