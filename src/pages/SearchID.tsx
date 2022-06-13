@@ -1,8 +1,6 @@
 import React, { ReactElement, FC, useState, useEffect } from 'react';
 import { useGetCocktailByIDQuery } from '../features/cocktails';
-import { Button, TextField, Grid, Box, ListItem, ListItemText } from "@mui/material";
-import { Controller, useForm } from "react-hook-form";
-import CocktailCard from '../components/CocktailCard';
+import { Button, Skeleton } from "@mui/material";
 import { useParams, useSearchParams } from "react-router-dom";
 import CocktailDetail from '../components/CocktailDetail';
 import { IDrink } from '../features/types';
@@ -16,10 +14,12 @@ const SearchID: FC = (): ReactElement => {
         error
         } = useGetCocktailByIDQuery(id ? id : "");
 
-    console.log(typeof cocktails)
+    if(isLoading) return <Skeleton variant="text" />
+    if(error) return <div>An error has occured.</div>
+
   return (
     <>
-        <CocktailDetail props={cocktails}/>
+        {cocktails ? <CocktailDetail drink={cocktails.drinks[0]} /> : "No data"}
     </>
   );
 };
