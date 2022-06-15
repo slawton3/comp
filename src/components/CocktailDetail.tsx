@@ -9,20 +9,15 @@ interface CocktailDetailProps {
 
 const CocktailDetail: FC<CocktailDetailProps> = ({ drink }) => {
 
-  const [ingredients, setIngredients] = useState<string[]>([])
-  const [instructions, setInstructions] = useState<string[]>([])
+  const [ingredients, setIngredients] = useState({})
+  const [instructions, setInstructions] = useState({})
 
   useEffect(() => {
     const parseDrink = (drink: IDrink) => {
-      const vals: string[] = Object.values(drink)
-      console.log(vals);
-      const filteredIngredients = (val: string) => val.includes("strIngredient");
-      const ingreds = vals.filter(filteredIngredients);
-      setIngredients(ingreds);
-      console.log(ingreds);
-      const filteredInstructions = (val: string) => val.includes("strInstruction");
-      const instrucs = vals.filter(filteredInstructions);
-      console.log(instrucs);
+      const ingreds = Object.fromEntries(Object.entries(drink).filter(([key]) => key.includes('strIngredient')));
+      const instrucs = Object.fromEntries(Object.entries(drink).filter(([key]) => key.includes('strInstructions')));
+      
+      setIngredients(ingreds)
       setInstructions(instrucs);
     };
     parseDrink(drink);
@@ -30,7 +25,7 @@ const CocktailDetail: FC<CocktailDetailProps> = ({ drink }) => {
 
   return (
     <List>
-
+      
     </List>
   )
 }
