@@ -15,8 +15,8 @@ const CocktailDetail: FC<CocktailDetailProps> = ({ drink }) => {
 
   useEffect(() => {
     const parseDrink = (drink: IDrink) => {
-      const ingreds = Object.fromEntries(Object.entries(drink).filter(([key]) => key.includes('strIngredient')));
-      const instrucs = Object.fromEntries(Object.entries(drink).filter(([key]) => key.includes('strInstructions')));
+      const ingreds = Object.fromEntries(Object.entries(drink).filter(([key, value]) => key.includes('strIngredient') && value !== null));
+      const instrucs = Object.fromEntries(Object.entries(drink).filter(([key, value]) => key.includes('strInstructions') && value !== null));
       
       setIngredients(Object.values(ingreds))
       setInstructions(Object.values(instrucs));
