@@ -1,7 +1,9 @@
 
-import { Checkbox, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { Box, Checkbox, Grid, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import React, { FC, useEffect, useState } from 'react'
 import { IDrink } from '../features/types'
+import ListIngredients from './CocktaiDetail/ListIngredients';
+import CocktailCard from './CocktailCard';
 
 interface CocktailDetailProps {
   drink: IDrink;
@@ -11,7 +13,6 @@ const CocktailDetail: FC<CocktailDetailProps> = ({ drink }) => {
 
   const [ingredients, setIngredients] = useState<string[]>([])
   const [instructions, setInstructions] = useState<string[]>([])
-  const [checked, setChecked] = useState<number[]>([0])
 
   useEffect(() => {
     const parseDrink = (drink: IDrink) => {
@@ -24,51 +25,24 @@ const CocktailDetail: FC<CocktailDetailProps> = ({ drink }) => {
     parseDrink(drink);
   }, [])
 
-  const handleToggle = (value: number) => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+  const displayDetailedCard = (): JSX.Element => {
+      const detail = { "cocktail": drink, "ingredients": ingredients, "instructions": instructions }
+      return (
+        <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            mt={20}
+          >
 
-    if(currentIndex === -1) {
-      newChecked.push(value);
-    }
-    else {
-      newChecked.splice(currentIndex, 1);
-    }
-    setChecked(newChecked);
-  }
-
-  const getIngredients = (): JSX.Element => {
-    return (
-        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-        {ingredients.map((ingredient, idx) => {
-          const labelId = `checkbox-list-label-${ingredient}`;
-
-          return (
-            <ListItem
-              key={idx}
-              disablePadding
-            >
-              <ListItemButton role={undefined} onClick={() => handleToggle(idx)} dense>
-                <ListItemIcon>
-                  <Checkbox
-                    edge="start"
-                    tabIndex={-1}
-                    disableRipple
-                    inputProps={{ 'aria-labelledby': labelId }}
-                  />
-                </ListItemIcon>
-                <ListItemText id={labelId} primary={ingredient} />
-              </ListItemButton>
-            </ListItem>
-          );
-        })}
-      </List>
-    )
+          <CocktailCard cocktail={detail}/>
+        </Box>
+      )
   }
 
   return (
     <div>
-      {ingredients && getIngredients()}
+      {ingredients && displayDetailedCard()}
     </div>
   )
 }
