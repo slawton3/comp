@@ -9,9 +9,9 @@ import { IDrink } from '../features/types';
 import { styled } from '@mui/material';
 
 interface ICocktail {
-  "cocktail": IDrink;
-  "ingredients"?: string[];
-  "instructions"?: string[] 
+  cocktail: IDrink;
+  ingredients?: string[];
+  instructions?: string[];
 }
 
 const StyledCard = styled(Card)({
@@ -26,21 +26,21 @@ const StyledCard = styled(Card)({
   }
 })
 
-export default function CocktailCard(cocktail: ICocktail) {
+export default function CocktailCard({ cocktail, ingredients, instructions }: ICocktail) {
   return (
     <StyledCard>
       <CardMedia
         component="img"
-        alt={cocktail.cocktail.strDrink}
+        alt={cocktail?.strDrink}
         height="140"
-        image={cocktail?.cocktail.strDrinkThumb}
+        image={cocktail?.strDrinkThumb}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {cocktail?.cocktail.strDrink}
+          {cocktail?.strDrink}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {cocktail?.cocktail.strIBA}
+          {cocktail?.strIBA}
         </Typography>
       </CardContent>
       <CardActions>

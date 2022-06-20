@@ -4,9 +4,13 @@ import React, { FC, useEffect, useState } from 'react'
 import { IDrink } from '../features/types'
 import ListIngredients from './CocktaiDetail/ListIngredients';
 import CocktailCard from './CocktailCard';
-
 interface CocktailDetailProps {
   drink: IDrink;
+}
+interface ICocktail {
+  "cocktail": IDrink;
+  "ingredients"?: string[];
+  "instructions"?: string[] 
 }
 
 const CocktailDetail: FC<CocktailDetailProps> = ({ drink }) => {
@@ -26,7 +30,7 @@ const CocktailDetail: FC<CocktailDetailProps> = ({ drink }) => {
   }, [])
 
   const displayDetailedCard = (): JSX.Element => {
-      const detail = { "cocktail": drink, "ingredients": ingredients, "instructions": instructions }
+      const detail = { cocktail: drink, ingredients: ingredients, instructions: instructions }
       return (
         <Box
             display="flex"
@@ -35,7 +39,7 @@ const CocktailDetail: FC<CocktailDetailProps> = ({ drink }) => {
             mt={20}
           >
 
-          <CocktailCard cocktail={detail}/>
+          <CocktailCard {...detail} />
         </Box>
       )
   }
