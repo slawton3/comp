@@ -7,42 +7,35 @@ interface CocktailDetailProps {
   drink: IDrink;
 }
 
-interface IIngredients {
+interface IIngredientsProps {
   ingredient: string,
   measure: string,
 }
 
 const CocktailDetail: FC<CocktailDetailProps> = ({ drink }) => {
 
-  const [ingredients, setIngredients] = useState<string[]>([]);
+  const [ingredients, setIngredients] = useState<Array<IIngredientsProps>>([]);
   const [instructions, setInstructions] = useState<string[]>([]);
-  const [measures, setMeasures] = useState<string[]>([]);
 
   useEffect(() => {
     const parseDrink = (drink: IDrink) => {
       const ingreds = Object.fromEntries(Object.entries(drink).filter(([key, value]) => key.includes('strIngredient') && value !== null));
       const instrucs = Object.fromEntries(Object.entries(drink).filter(([key, value]) => key === 'strInstructions' && value !== null));
       const measure = Object.fromEntries(Object.entries(drink).filter(([key, value]) => key.includes('strMeasure') && value !== null));
-
-      setIngredients(Object.values(ingreds))
+      const combinedArr = [];
+      const str1 = "Ingredient";
+      const str2 = "Measure";
       setInstructions(Object.values(instrucs));
-      setMeasures(Object.values(measure));
     };
     parseDrink(drink);
   }, [])
 
   const displayDetailedCard = (): JSX.Element => {
-      let ingredientMeasures:  = []
-      const combine = () => {
-        for(let i of ingredients){
-            ingredientMeasures.push{ingredient: ingredients[i], measure: measures[i]};
-        }
-      }
+      
       const detail = { 
                       cocktail: drink, 
                       ingredients: ingredients,
                       instructions: instructions, 
-                      measures: measures 
                     }
       return (
         <Box

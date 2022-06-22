@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { IDrink } from '../features/types';
 import { styled } from '@mui/material';
-import ListDetail from './CocktaiDetail/ListDetail';
+import ListIngredients from './CocktaiDetail/ListIngredients';
 
 interface IIngredients {
   ingredient: string,
@@ -55,14 +55,11 @@ export default function CocktailCard({ cocktail, ingredients, instructions }: IC
               Ingredients
             </Typography>
           <CardContent>
-            <ListDetail details={ingredients} />
+            <ListIngredients ingredients={ingredients} />
           </CardContent>
           <Typography variant="h5" color="text.secondary">
               Instructions
             </Typography>
-          <CardContent>
-            <ListDetail details={instructions} />
-          </CardContent>
         </StyledCard>
       </div>
     )
