@@ -50,11 +50,19 @@ const CocktailDetail: FC<CocktailDetailProps> = ({ drink }) => {
 
     const displayDetailedCard = (): JSX.Element => {
         return (
-            <Container maxWidth="md">
-                <Grid spacing={2} alignItems="center">
+            <Grid
+                container
+                direction="column"
+                spacing={2}
+                justifyContent="center"
+            >
+                <Grid item>
                     <Typography variant="h2" textAlign="center">
                         {drink.strDrink}
                     </Typography>
+                </Grid>
+
+                <Grid item>
                     <img
                         src={drink.strDrinkThumb}
                         alt={drink.strDrink}
@@ -62,9 +70,11 @@ const CocktailDetail: FC<CocktailDetailProps> = ({ drink }) => {
                         height={350}
                         loading="lazy"
                     />
+                </Grid>
+                <Grid item>
                     <DisplayIngredients ingredients={ingredients} />
                 </Grid>
-            </Container>
+            </Grid>
         );
     };
 
