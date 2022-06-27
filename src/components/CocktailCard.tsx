@@ -6,16 +6,9 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { IDrink } from "../features/types";
 import { styled } from "@mui/material";
-import ListIngredients from "./CocktaiDetail/ListIngredients";
 
-interface IIngredients {
-    ingredient: string;
-    measure: string;
-}
 interface ICocktail {
     cocktail: IDrink;
-    ingredients?: Array<IIngredients>;
-    instructions?: string[];
 }
 
 const StyledCard = styled(Card)({
@@ -31,46 +24,7 @@ const StyledCard = styled(Card)({
     }
 });
 
-export default function CocktailCard({
-    cocktail,
-    ingredients,
-    instructions
-}: ICocktail) {
-    const createDetailedCard = (
-        ingredients: Array<IIngredients>,
-        instructions: string[]
-    ) => {
-        return (
-            <div>
-                <StyledCard>
-                    <CardMedia
-                        component="img"
-                        alt={cocktail?.strDrink}
-                        height="140"
-                        image={cocktail?.strDrinkThumb}
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            {cocktail?.strDrink}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            {cocktail?.strIBA}
-                        </Typography>
-                    </CardContent>
-                    <Typography variant="h5" color="text.secondary">
-                        Ingredients
-                    </Typography>
-                    <CardContent>
-                        <ListIngredients ingredients={ingredients} />
-                    </CardContent>
-                    <Typography variant="h5" color="text.secondary">
-                        Instructions
-                    </Typography>
-                </StyledCard>
-            </div>
-        );
-    };
-
+export default function CocktailCard({ cocktail }: ICocktail) {
     const createStandardCard = () => {
         return (
             <div>
@@ -98,11 +52,5 @@ export default function CocktailCard({
         );
     };
 
-    return (
-        <div>
-            {ingredients && instructions
-                ? createDetailedCard(ingredients, instructions)
-                : createStandardCard()}
-        </div>
-    );
+    return <div>{createStandardCard()}</div>;
 }

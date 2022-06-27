@@ -1,6 +1,7 @@
-import { Box } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import { FC, useEffect, useState } from "react";
 import { IDrink } from "../features/types";
+import DisplayIngredients from "./CocktaiDetail/DisplayIngredients";
 import CocktailCard from "./CocktailCard";
 interface CocktailDetailProps {
     drink: IDrink;
@@ -39,7 +40,7 @@ const CocktailDetail: FC<CocktailDetailProps> = ({ drink }) => {
             );
             const combined = Object.keys(ingreds).map((k) => ({
                 ingredient: ingreds[k],
-                measure: measures[`strMeasure${k.slice(13)}`] ?? ""
+                measure: measures[`strMeasure${k.slice(13)}`] ?? "Add"
             }));
             setIngredients(combined);
             setInstructions(Object.values(instrucs));
@@ -48,20 +49,22 @@ const CocktailDetail: FC<CocktailDetailProps> = ({ drink }) => {
     }, []);
 
     const displayDetailedCard = (): JSX.Element => {
-        const detail = {
-            cocktail: drink,
-            ingredients: ingredients,
-            instructions: instructions
-        };
         return (
-            <Box
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                mt={20}
-            >
-                <CocktailCard {...detail} />
-            </Box>
+            <Container maxWidth="md">
+                <Grid spacing={2} alignItems="center">
+                    <Typography variant="h2" textAlign="center">
+                        {drink.strDrink}
+                    </Typography>
+                    <img
+                        src={drink.strDrinkThumb}
+                        alt={drink.strDrink}
+                        width={350}
+                        height={350}
+                        loading="lazy"
+                    />
+                    <DisplayIngredients ingredients={ingredients} />
+                </Grid>
+            </Container>
         );
     };
 
