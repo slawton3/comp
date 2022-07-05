@@ -46,7 +46,7 @@ const CocktailDetail: FC<CocktailDetailProps> = ({ drink }) => {
             setInstructions(Object.values(instrucs));
         };
         parseDrink(drink);
-    }, []);
+    }, [drink]);
 
     const displayDetailedCard = (): JSX.Element => {
         return (
