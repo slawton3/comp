@@ -2,7 +2,7 @@ import React, { ReactElement, FC, useState, useEffect } from "react";
 import { useGetCocktailByIDQuery } from "../features/cocktails";
 import { Button, Skeleton } from "@mui/material";
 import { useParams, useSearchParams } from "react-router-dom";
-import CocktailDetail from "../components/CocktailDetail";
+import CocktailDetail from "../components/CocktaiDetail/CocktailDetail";
 import { IDrink } from "../features/types";
 
 const SearchID: FC = (): ReactElement => {
