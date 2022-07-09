@@ -6,9 +6,10 @@ import {
     Typography,
     Button,
     Divider,
-    Link
+    Link,
+    Skeleton
 } from "@mui/material";
-import CocktailCard from '../components/CocktaiDetail/CocktailCard'
+import CocktailCard from "../components/CocktaiDetail/CocktailCard";
 import { useGetMostPopularCocktailsQuery } from "../features/cocktails";
 
 const Home: FC = (): ReactElement => {
@@ -49,16 +50,24 @@ const Home: FC = (): ReactElement => {
                 The Classics
             </Typography>
             <Grid container spacing={4} sx={{ mx: "auto", width: "80%" }}>
-                {cocktails?.drinks?.map((cocktail) => (
-                    <Grid item xs={12} sm={6} md={4}>
-                        <Link href={`/search/${cocktail.idDrink}`}>
-                            <CocktailCard
-                                key={cocktail.idDrink}
-                                cocktail={cocktail}
-                            />
-                        </Link>
-                    </Grid>
-                ))}
+                {!isLoading ? (
+                    cocktails?.drinks?.map((cocktail) => (
+                        <Grid item xs={12} sm={6} md={4}>
+                            <Link href={`/search/${cocktail.idDrink}`}>
+                                <CocktailCard
+                                    key={cocktail.idDrink}
+                                    cocktail={cocktail}
+                                />
+                            </Link>
+                        </Grid>
+                    ))
+                ) : (
+                    <Skeleton
+                        variant="rectangular"
+                        width="100%"
+                        height="100%"
+                    />
+                )}
             </Grid>
         </>
     );
