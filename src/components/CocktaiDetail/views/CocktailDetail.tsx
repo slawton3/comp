@@ -1,7 +1,7 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { FC, useEffect, useState } from "react";
-import { IDrink } from "../../features/types";
-import DisplayIngredients from "./DisplayIngredients";
+import { IDrink } from "../../../features/types";
+import DisplayIngredients from "../components/DisplayIngredients";
 import CocktailCard from "./CocktailCard";
 interface CocktailDetailProps {
     drink: IDrink;
