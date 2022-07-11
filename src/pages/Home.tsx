@@ -9,7 +9,7 @@ import {
     Link,
     Skeleton
 } from "@mui/material";
-import CocktailCard from "../components/CocktaiDetail/CocktailCard";
+import CocktailCard from "../components/CocktaiDetail/views/CocktailCard";
 import { useGetMostPopularCocktailsQuery } from "../features/cocktails";
 
 const Home: FC = (): ReactElement => {

@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { IDrink } from "../../features/types";
+import { IDrink } from "../../../features/types";
 import { styled } from "@mui/material";
 
 interface ICocktail {

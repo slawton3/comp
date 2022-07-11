@@ -13,7 +13,7 @@ import {
     ListItemText
 } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
-import CocktailCard from '../components/CocktaiDetail/CocktailCard'
+import CocktailCard from '../components/CocktaiDetail/views/CocktailCard'
 
 const Search: FC = (): ReactElement => {
     const { handleSubmit, reset, control } = useForm();
